@@ -1,0 +1,36 @@
+## Upgrades
+- [ ] Increasing speech recognition speed
+
+## Features
+- [ ] Calendar
+    - [X] Time
+    - [ ] Events
+    - [X] Reminders
+- [ ] Music
+    - [ ] Spotify integration
+    - [ ] Download songs
+    - [ ] Like songs
+    - [ ] Add to playlist
+- [ ] Add a web scraping modules repository
+    - [ ] Check Mail or Notify!
+    - [ ] YouTube Alerts
+    - [ ] Netflix Play
+- [ ] Anime List
+    - [X] Search for anime
+    - [ ] Add new anime
+    - [ ] List new episodes from the Anime list
+    - [ ] Anime recommendation
+    - [ ] Stream maybe?
+    - [ ] Integrate with Theatre-CLI
+- [ ] Smart Home
+    - [ ] Study Lamp
+    - [ ] Bluetooth speaker connect
+    - [ ] Volume controls
+    - [ ] Multiple mic locations
+    - [ ] Camera clicks
+- [ ] Voice
+    - [ ] Change Vylet's voice using AI Voice generator
+    - [ ] Add more lang options based on keywords
+- [ ] Apps
+    - [X] Open and close apps
+    - [ ] Add more apps to the app list 
