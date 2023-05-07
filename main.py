@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 
 import src.calendar.date_time as date_time
@@ -9,6 +8,7 @@ import src.apps.access_apps as access_apps
 import src.browser.access_sites as access_sites
 import src.senses.speech as speech
 from src.consts import ADDRESSING, NICKNAME, SLEEP_CALL, WAKE_UP_CALL
+import src.music.spotify as spotify
 
 
 def main():
@@ -24,17 +24,20 @@ def main():
 
             # TODO: do a re.search() for specific set of keywords rather than sentences
             # if "open" is found in text, search for the website
-            if re.search("open on chrome", text):
+            words = ("open", "on chrome")
+            if all([re.search(w, text) for w in words]):
                 access_sites.search_online(text)
 
-            if re.search("open the application", text):
+            words = ("open", "application")
+            if all([re.search(w, text) for w in words]):
                 # get the app name from the text
-                app = text.split("open the application")[1][:-1].strip()
+                app = text.split("application")[1][:-1].strip()
                 access_apps.open_app(app)
 
-            if re.search("close the application", text):
+            words = ("close", "application")
+            if all([re.search(w, text) for w in words]):
                 # get the app name from the text
-                app = text.split("close the application")[1][:-1].strip()
+                app = text.split("application")[1][:-1].strip()
                 access_apps.close_app(app)
 
             # if "time right now" is found in text, tell the time
@@ -49,16 +52,7 @@ def main():
             # if "set a reminder" is found in text, set a reminder
             words = ("remind me", "to")
             if all([re.search(w, text) for w in words]):
-                # get the time and reminder from the text, time comes after the word at
-                reminder = (text.split("remind me")[1].strip())[:-1]
-                if re.search("at", reminder):
-                    time = reminder.split("at")[1].strip()
-                    reminder = reminder.split("at")[0].strip()
-                    reminders.set_reminder(time, reminder)
-                    speech.say(f"Reminder set! {reminder} at {time}")
-                else:
-                    reminders.set_reminder("None", reminder)
-                    speech.say(f"Reminder set! {reminder}")
+                reminders.prompt(text)
 
             # if "show my reminders" is found in text, show reminders
             words = ("put", "reminders", "screen")
@@ -76,6 +70,11 @@ def main():
                 # TODO: open a dialogue box to check the reminder to be deleted
                 reminder = (text.split("reminder")[1].strip())[:-1]
                 reminders.delete_reminder(reminder)
+
+            # if "download song" is found in text, prompt to download song
+            words = ("download", "song")
+            if all([re.search(w, text) for w in words]):
+                spotify.prompt()
 
 
 if __name__ == "__main__":

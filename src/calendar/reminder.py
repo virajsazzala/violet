@@ -1,4 +1,5 @@
 import csv
+import re
 import time
 import tkinter as tk
 from datetime import date
@@ -6,6 +7,19 @@ from tkinter import ttk
 
 import src.senses.speech as speech
 from src.consts import REMINDERS_FILE, REMINDERS_TEMP_FILE
+
+
+def prompt(text):
+    # get the time and reminder from the text, time comes after the word at
+    reminder = (text.split("remind me")[1].strip())[:-1]
+    if re.search("at", reminder):
+        time = reminder.split("at")[1].strip()
+        reminder = reminder.split("at")[0].strip()
+        set_reminder(time, reminder)
+        speech.say(f"Reminder set! {reminder} at {time}")
+    else:
+        set_reminder("None", reminder)
+        speech.say(f"Reminder set! {reminder}")
 
 
 # works with text
@@ -77,7 +91,7 @@ def delete_reminder(reminder):
 
 
 def main():
-    set_reminder("testing1")
+    pass
 
 
 if __name__ == "__main__":
