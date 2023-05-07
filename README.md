@@ -24,7 +24,7 @@ Violet is designed to be easy to use and understand. You can interact with Viole
 Here are some examples of commands you can use with Violet:
 
 - "Hey violet, what are my tasks for today?"
-- "Hey violet, Send an email to Zack with the subject 'Meeting Reminder'"
+- "Hey violet, Email Zack with the subject 'Meeting Reminder'"
 - "Hey violet, remind me to buy milk tomorrow at 5pm"
 - "Hey violet, play my favorite songs on Spotify"
 - "Hey violet, can you open chrome for me?"
